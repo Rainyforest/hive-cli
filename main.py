@@ -1,28 +1,15 @@
-import typer
-from utils import read_file
+from typing import Union
 
-app = typer.Typer()
-       
-@app.command()
-def health():
-    print("Hello, world!")
+from fastapi import FastAPI
 
-@app.command()
-def quest():
-    from InquirerPy import prompt
+app = FastAPI()
 
-    questions = [
-        # {"type": "input", "message": "What's your name:", "name": "name"},
-        {
-            "type": "list",
-            "message": "What word book are you choosing?",
-            "choices": ["N1", "N2", "N3", "N4", "N5"]
-        }
-        # {"type": "confirm", "message": "Confirm?"}
-    ]
-    result = prompt(questions)
-    book_name = result[0]
-    read_file('words/{}.csv'.format(book_name.lower()))
 
-if __name__ == "__main__":
-    app()
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
+
+
+@app.get("/items/{item_id}")
+def read_item(item_id: int, q: Union[str, None] = None):
+    return {"item_id": item_id, "q": q}
