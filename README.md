@@ -31,9 +31,9 @@ Install pipreqs if you haven't
 
 Cd into the current project folder and use `--force` to overrwrite the current requirements.txt file.
 
-`pipreqs ./ --force`
+`pipreqs ./ --ignore .venv --force`
 
-Reference: https://stackoverflow.com/questions/32390291/pip-freeze-for-only-project-requirements
+Reference: https://stackoverflow.com/questions/64630130/pipreqs-requirements-txt-is-not-correct
 
 Start application:
 ```
