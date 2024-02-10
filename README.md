@@ -6,19 +6,20 @@ _A command line dictionary and word learning tool_
 
 Refereneces: https://typer.tiangolo.com/tutorial/first-steps/
 
-1. Install the dependencies
+### 1. Install the dependencies
 
 ```
 pip install -r requirements.txt
 ```
+Start venv: 
+```
+source .venv/bin/activate
+```
 
 Start application:
-
 ```
-uvicorn main:app --reload
+python main.py
 ```
-
-2. Set up the base template main.py
 
 ## How to update dependencies
 

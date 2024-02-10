@@ -10,14 +10,16 @@ metadata = MetaData()
 # Reflect an existing table
 words_reflected = Table('words', metadata, autoload_with=engine)
 
-# Construct a SELECT statement
-select_stmt = select(words_reflected)
+def get_all_words():
+    # Construct a SELECT statement
+    select_stmt = select(words_reflected)
 
-# Execute the query
-with engine.connect() as connection:
-    result = connection.execute(select_stmt)
-    for row in result:
-        print(row)  # Each 'row' is a RowProxy object that allows you to access row data by column name or position
+    # Execute the query
+    with engine.connect() as connection:
+        result = connection.execute(select_stmt)
+        return result.mappings().all()
+    # for row in result:
+    #     print(row)  # Each 'row' is a RowProxy object that allows you to access row data by column name or position
 
 
 ## Helper function that directly uses sqlite3 library
